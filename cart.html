@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your cart | Abby's Beauty</title>
+  <meta name="theme-color" content="#E8467C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="index.html">Abby's Beauty</a>
+    <a class="btn btn-ghost" href="index.html">Keep shopping</a>
+  </header>
+
+  <main class="narrow">
+    <div id="cartView">
+      <h1>Your cart</h1>
+      <div id="cartItems"></div>
+
+      <div id="summary" class="summary" hidden>
+        <span>Total</span><strong id="total"></strong>
+      </div>
+
+      <p id="loginPrompt" class="prompt" hidden>
+        Log in or sign up to check out.
+        <a class="btn btn-solid" href="index.html#login">Log in</a>
+      </p>
+
+      <form id="checkout" class="checkout" hidden>
+        <h2>Delivery details</h2>
+        <label>Full name <input id="cName" name="name" required autocomplete="name"></label>
+        <label>Phone number <input name="phone" type="tel" required inputmode="tel" autocomplete="tel"></label>
+        <label>Delivery address <textarea name="address" rows="3" required></textarea></label>
+        <label>Note (optional) <input name="note"></label>
+        <p id="orderMsg" class="msg" role="alert"></p>
+        <button id="placeOrder" class="btn btn-solid" type="submit">Place order</button>
+      </form>
+    </div>
+
+    <section id="payment" class="payment" hidden></section>
+  </main>
+
+  <footer class="foot">
+    <strong>Abby's Beauty</strong>
+    <span>Look Good. Feel Good.</span>
+    <a id="waLink" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </footer>
+
+  <script type="module" src="js/cart-page.js"></script>
+</body>
+</html>

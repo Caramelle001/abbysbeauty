@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Abby's Beauty | Look Good. Feel Good.</title>
+  <meta name="theme-color" content="#E8467C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <p class="notice">Perfumes are our main sale. Message us on WhatsApp to order.</p>
+
+  <header class="top">
+    <a class="logo" href="index.html">Abby's Beauty</a>
+    <div class="actions">
+      <button id="openAuth" class="btn btn-ghost" type="button">Log in</button>
+      <div id="userMenu" class="user-menu" hidden>
+        <span id="hello"></span>
+        <a id="adminLink" class="btn btn-ghost" href="admin.html" hidden>Admin</a>
+        <button id="logoutBtn" class="btn btn-ghost" type="button">Log out</button>
+      </div>
+      <a class="cart" href="cart.html" aria-label="Cart">Cart <span id="cartCount">0</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="searchbar">
+      <input id="q" type="search" placeholder="Search perfumes, bags, shoes" aria-label="Search products">
+      <details class="filters">
+        <summary>Filter and sort</summary>
+        <div class="filter-grid">
+          <label>Size <select id="fSize"><option value="">Any</option></select></label>
+          <label>Colour <select id="fColor"><option value="">Any</option></select></label>
+          <label>Min price <input id="fMin" type="number" min="0" inputmode="numeric"></label>
+          <label>Max price <input id="fMax" type="number" min="0" inputmode="numeric"></label>
+          <label>Availability
+            <select id="fStock">
+              <option value="all">All</option>
+              <option value="in">In stock</option>
+              <option value="out">Out of stock</option>
+            </select>
+          </label>
+          <label>Sort by
+            <select id="fSort">
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+            </select>
+          </label>
+        </div>
+        <button id="clearFilters" class="link" type="button">Clear all</button>
+      </details>
+    </section>
+
+    <section id="adsBoard" class="ads" aria-label="Offers"></section>
+
+    <section class="shelf">
+      <nav id="collections" class="chips" aria-label="Collections"></nav>
+      <p id="resultCount" class="count"></p>
+      <div id="grid" class="grid"><p class="empty">Loading products</p></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <strong>Abby's Beauty</strong>
+    <span>Look Good. Feel Good.</span>
+    <a id="waLink" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </footer>
+
+  <dialog id="authModal">
+    <form id="authForm" autocomplete="on">
+      <h2 id="authTitle">Welcome back</h2>
+      <label id="nameField" hidden>Full name
+        <input id="nameInput" name="name" type="text" autocomplete="name">
+      </label>
+      <label>Email
+        <input name="email" type="email" required autocomplete="email">
+      </label>
+      <label>Password
+        <input name="password" type="password" required minlength="6" autocomplete="current-password">
+      </label>
+      <p id="authMsg" class="msg" role="alert"></p>
+      <button id="authSubmit" class="btn btn-solid" type="submit">Log in</button>
+      <button id="authSwitch" class="link" type="button">New here? Sign up</button>
+      <button id="closeAuth" class="link" type="button">Close</button>
+    </form>
+  </dialog>
+
+  <dialog id="productModal"><div id="productBody"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/shop.js"></script>
+</body>
+</html>

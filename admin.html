@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin | Abby's Beauty</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#E8467C">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="logo" href="index.html">Abby's Beauty</a>
+    <div class="actions">
+      <a class="btn btn-ghost" href="index.html">View shop</a>
+      <button id="adminLogout" class="btn btn-ghost" type="button" hidden>Log out</button>
+    </div>
+  </header>
+
+  <main id="gate" class="narrow">
+    <h1>Admin</h1>
+    <p id="gateMsg">Checking your account</p>
+  </main>
+
+  <main id="adminApp" class="admin" hidden>
+    <nav class="chips" aria-label="Admin sections">
+      <button class="chip" data-tab="overview" type="button" aria-pressed="true">Overview</button>
+      <button class="chip" data-tab="orders" type="button" aria-pressed="false">Orders <span id="pendingBadge" class="pill" hidden></span></button>
+      <button class="chip" data-tab="products" type="button" aria-pressed="false">Products</button>
+      <button class="chip" data-tab="collections" type="button" aria-pressed="false">Collections</button>
+      <button class="chip" data-tab="ads" type="button" aria-pressed="false">Ads board</button>
+    </nav>
+
+    <!-- OVERVIEW -->
+    <section id="tab-overview" class="tab">
+      <div id="stats" class="stats"></div>
+      <h2>Last 7 days</h2>
+      <div id="week" class="tablewrap"></div>
+      <h2>Needs restocking</h2>
+      <div id="lowStock"></div>
+    </section>
+
+    <!-- ORDERS -->
+    <section id="tab-orders" class="tab" hidden>
+      <nav id="orderFilters" class="chips" aria-label="Order status">
+        <button class="chip" data-f="pending" type="button" aria-pressed="true">Pending</button>
+        <button class="chip" data-f="confirmed" type="button" aria-pressed="false">Confirmed</button>
+        <button class="chip" data-f="delivered" type="button" aria-pressed="false">Delivered</button>
+        <button class="chip" data-f="cancelled" type="button" aria-pressed="false">Cancelled</button>
+        <button class="chip" data-f="all" type="button" aria-pressed="false">All</button>
+      </nav>
+      <div id="orderList"></div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="tab-products" class="tab" hidden>
+      <form id="pForm" class="panel">
+        <h2 id="pFormTitle">Add a product</h2>
+        <label>Product name <input id="pName" required></label>
+        <label>Collection
+          <select id="pCollection" required><option value="">Choose collection</option></select>
+        </label>
+        <div class="two">
+          <label>Price <input id="pPrice" type="number" min="0" inputmode="numeric" required></label>
+          <label>Discount price (optional) <input id="pSale" type="number" min="0" inputmode="numeric"></label>
+        </div>
+        <div class="two">
+          <label>Number available <input id="pStock" type="number" min="0" inputmode="numeric" required></label>
+          <label>Special label
+            <select id="pTag">
+              <option value="">None</option>
+              <option value="combo">Combo</option>
+              <option value="special">Special</option>
+            </select>
+          </label>
+        </div>
+        <label>Sizes (separate with commas) <input id="pSizes" placeholder="S, M, L or 38, 39, 40"></label>
+        <label>Colours (separate with commas) <input id="pColors" placeholder="Pink, Black, Gold"></label>
+        <label>Description <textarea id="pDesc" rows="3" placeholder="For a combo, list what is inside"></textarea></label>
+        <label>Pictures (up to 5)
+          <input id="pImages" type="file" accept="image/*" multiple>
+        </label>
+        <div id="imgPreview" class="preview"></div>
+        <p id="pMsg" class="msg" role="alert"></p>
+        <button id="pSave" class="btn btn-solid" type="submit">Add product</button>
+        <button id="pCancel" class="link" type="button" hidden>Cancel editing</button>
+      </form>
+
+      <h2>On the shelf</h2>
+      <div id="pList"></div>
+    </section>
+
+    <!-- COLLECTIONS -->
+    <section id="tab-collections" class="tab" hidden>
+      <form id="cForm" class="panel">
+        <h2>Add a collection</h2>
+        <label>Collection name <input id="cInput" required placeholder="Perfumes"></label>
+        <p id="cMsg" class="msg" role="alert"></p>
+        <button class="btn btn-solid" type="submit">Add collection</button>
+      </form>
+      <h2>Your collections</h2>
+      <div id="cList"></div>
+    </section>
+
+    <!-- ADS BOARD -->
+    <section id="tab-ads" class="tab" hidden>
+      <form id="aForm" class="panel">
+        <h2>Add an ad</h2>
+        <label>Picture (wide pictures look best, about 16 by 7)
+          <input id="aImage" type="file" accept="image/*" required>
+        </label>
+        <label>Title on the ad (optional) <input id="aTitle" placeholder="Perfume sale this weekend"></label>
+        <label>Link (optional) <input id="aLink" type="url" placeholder="https://"></label>
+        <p id="aMsg" class="msg" role="alert"></p>
+        <button id="aSave" class="btn btn-solid" type="submit">Add ad</button>
+      </form>
+      <h2>On the board</h2>
+      <div id="aList"></div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>
